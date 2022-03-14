@@ -52,6 +52,21 @@ const SavingAccount=mongoose.Schema({
     timestamps:true,
 });
 
+app.get("/master",async(req,res)=>{
+    try{
+        const master=master.find({}).lean().exec();
+        res.send(master);
+    }catch(err){
+        console.log(err);
+        res.send(err);
+    }
+})
+
+
+
+
+
+
 const Saving=mongoose.model("/saving",SavingAccount);
 
 
