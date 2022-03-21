@@ -8,7 +8,7 @@ const bookSchema=({
     auther:{type:mongoose.Types.ObjectId,ref:"user",required:true},
 },
 {
-    timestamp:true,
+    timestamps:true,
 });
 
 const Book=mongoose.model("book",bookSchema);
