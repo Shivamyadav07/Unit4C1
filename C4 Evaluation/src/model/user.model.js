@@ -13,8 +13,11 @@ userSchema.pre("save",function(next){
     });
 })
 
-userSchema.method().checkPassword=function(password,cb){
-    
+userSchema.method().checkPassword=function(candidatePassword,cb){
+        bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+            if (err) return cb(err);
+            cb(null, isMatch);
+        });
 }
 
 const User=mongoose.model("user",userSchema);
